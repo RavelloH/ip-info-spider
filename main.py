@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-## 使用有问题请到github.com/ravelloh/RSS提ISSUE
+## 使用有问题请到github.com/ravelloh/ravelloh提ISSUE
 ### Author: RavelloH
 #### MICENCE: MIT
 ##### RSS Maker

@@ -35,16 +35,3 @@ jobs:
           git push -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  sync:
-    needs: build
-    runs-on: ubuntu-latest
-    continue-on-error: True
-    steps:
-      - uses: wearerequired/git-mirror-action@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
-        with:
-          source-repo: "git@github.com:RavelloH/EverydayNews.git"
-          destination-repo: "git@gitee.com:ravelloh/EverydayNews.git"
-
-

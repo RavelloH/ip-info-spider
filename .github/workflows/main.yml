@@ -1,0 +1,50 @@
+name: update
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest #运行环境
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: 'Git set'
+        run: |
+             git init
+             git pull
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+           python-version: 3.7 #v3
+      - name: 'Install requirements'
+        run: |
+             pip install urllib3 #安装依赖
+      - name: 'Working'
+        run: 
+          python main.py #运行主程序
+      - name: Record time  
+        run: echo `date` > runtime.log
+
+      - name: Commit files
+        run: |
+          git diff
+          git config --local user.email "dr_hamilton@foxmail.com"
+          git config --local user.name "Ravello-H"
+          git add -A
+          git commit -m "`date '+%Y-%m-%d %H:%M:%S'`" || exit #动态提交信息
+          git status
+          git push -f
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  sync:
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: True
+    steps:
+      - uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        with:
+          source-repo: "git@github.com:RavelloH/EverydayNews.git"
+          destination-repo: "git@gitee.com:ravelloh/EverydayNews.git"
+
+

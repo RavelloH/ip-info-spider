@@ -87,3 +87,5 @@ for N1 in range(0,256):
                                     remainSec = (ToDoResult-doneNum)/speed
                                     # print('\n'+str(remainSec)+'\n')
                                     print('\r'+time.strftime("%H:%M:%S",time.localtime())+' N4进度['+'|'*(N4//8)+' '*(32-(N4//8))+']'+str(N4)+'/256  - '+str(round((N4/12.8)*5,2))+'% - ' + time.strftime("%H:%M:%S", time.gmtime(remainSec)),end='')
+                                    if doneSec > 30:
+                                        exit()

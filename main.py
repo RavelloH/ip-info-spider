@@ -73,11 +73,8 @@ for N1 in range(0,256):
                                         originInfo = urlopen(urls+str(N1)+str(N2)+str(N3)+str(N4))
                                         fn.write(str(originInfo.read().decode('utf-8')).replace(', "code": 200, "desc": "success"',''))
                                     except:
-                                        while True:
-                                            originInfo = urlopen(urls+str(N1)+str(N2)+str(N3)+str(N4))
-                                            if str(originInfo.read().decode('utf-8')).replace(', "code": 200, "desc": "success"','') != '':
-                                                fn.write(str(originInfo.read().decode('utf-8')).replace(', "code": 200, "desc": "success"',''))
-                                                break
+                                        time.sleep(2)
+                                        pass
                                     with open(r"./update-info.info", 'w') as fp:
                                         fp.write(str(N1)+'\n'+str(N2)+'\n'+str(N3)+'\n'+str(N4)+'\n')
                                     NowDateTime = datetime.now()

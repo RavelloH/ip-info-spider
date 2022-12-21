@@ -9,7 +9,7 @@ import linecache
 import time
 from datetime import datetime 
 
-urls = 'https://ip.useragentinfo.com/json?ip='
+urls = 'http://ip-api.com/json/'
 # 初始化 
 startTime = time.localtime()
 startDateTime = datetime.now()

@@ -2,7 +2,7 @@
 ## 使用有问题请到github.com/ravelloh/ravelloh提ISSUE
 ### Author: RavelloH
 #### MICENCE: MIT
-##### RSS Maker
+##### ip-info-spider
 from urllib.request import urlopen
 import re,os
 import linecache
